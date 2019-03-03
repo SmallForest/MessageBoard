@@ -1,4 +1,4 @@
-## 使用servlet service dao实现的留言板功能
+# 使用servlet service dao实现的留言板功能
 - 实现公共留言板查看
 - 登录注册
 - 个人信息维护
