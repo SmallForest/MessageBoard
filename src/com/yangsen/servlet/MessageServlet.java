@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -21,7 +20,7 @@ public class MessageServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         super.init();
-        messageService = new MessageService();
+        messageService = MessageService.getInstance();
     }
 
     @Override

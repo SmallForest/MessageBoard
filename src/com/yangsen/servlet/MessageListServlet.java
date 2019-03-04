@@ -22,7 +22,7 @@ public class MessageListServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         super.init();
-        messageService = new MessageService();
+        messageService = MessageService.getInstance();
     }
 
     @Override

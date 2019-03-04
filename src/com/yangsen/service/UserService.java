@@ -6,8 +6,22 @@ import com.yangsen.dao.UserDAO;
 public class UserService {
     private UserDAO userDAO;
 
-    public UserService() {
+    // 私有构造方法
+    private UserService() {
         userDAO = new UserDAO();
+    }
+    // 声明属性
+    private static UserService single;
+
+    public static UserService getInstance(){
+        if (null == single){
+            synchronized (UserService.class){
+                if (null == single){
+                    return new UserService();
+                }
+            }
+        }
+        return single;
     }
 
     /**

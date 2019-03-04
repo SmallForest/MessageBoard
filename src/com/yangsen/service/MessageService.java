@@ -11,11 +11,32 @@ public class MessageService {
     private MessageDAO messageDao;
 
     /**
-     * 通过狗仔构造方法生成dao
+     * 通过私有构造方法生成dao
+     * 私有构造方法
      */
-    public MessageService() {
+    private MessageService() {
         messageDao = new MessageDAO();
     }
+    //声明私有属性
+    private static MessageService single=null;
+
+    /**
+     * 声明获取对象方法
+     * 双重检查
+     * @return
+     */
+    public static MessageService getInstance(){
+        if (null == single){
+            synchronized (MessageService.class){
+                if (null == single){
+                    single = new MessageService();
+                }
+            }
+        }
+        return single;
+    }
+
+
 
     /**
      * 获取所有类型的分页数据

@@ -17,7 +17,7 @@ public class RegisterServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         super.init();
-        userService = new UserService();
+        userService = UserService.getInstance();
     }
 
     @Override
@@ -68,8 +68,6 @@ public class RegisterServlet extends HttpServlet {
                 request.getRequestDispatcher("/regPrompt.do").forward(request, response);
                 return;
             }
-
-
         } else {
             //to 404
             request.getRequestDispatcher("/WEB-INF/views/error/404.jsp").forward(request, response);

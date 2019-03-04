@@ -8,9 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Objects;
 
 public class UserServlet extends HttpServlet {
@@ -24,7 +21,7 @@ public class UserServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        userService = new UserService();
+        userService = UserService.getInstance();
     }
 
     @Override
@@ -61,8 +58,6 @@ public class UserServlet extends HttpServlet {
 
             Boolean r = userService.updateUser(user);
             if (r) {
-//                request.getSession().setAttribute("user", user);
-//                request.setAttribute("user", user);
                 request.getRequestDispatcher("/WEB-INF/views/biz/user.jsp").forward(request, response);
             } else {
                 request.getRequestDispatcher("/WEB-INF/views/error/404.jsp").forward(request, response);
